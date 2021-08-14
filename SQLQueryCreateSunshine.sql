@@ -1,4 +1,4 @@
-CREATE DATABASE SunshineVietnam
+CREATE DATABASE VietnamSunshine
 GO
 
 CREATE TABLE RoleUser(
