@@ -12,16 +12,22 @@ namespace Sunshine.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RoleAddress
+    public partial class City
     {
-        public RoleAddress()
+        public City()
         {
-            this.Addresses = new HashSet<Address>();
+            this.Districts = new HashSet<District>();
+            this.Plans = new HashSet<Plan>();
+            this.Posts = new HashSet<Post>();
+            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
-        public string NameRole { get; set; }
+        public string NameCity { get; set; }
     
-        public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<District> Districts { get; set; }
+        public virtual ICollection<Plan> Plans { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

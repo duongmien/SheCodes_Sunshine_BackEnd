@@ -160,47 +160,51 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Address.cs">
-      <DependentUpon>ModelSunshine.tt</DependentUpon>
+    <Compile Include="Models\City.cs">
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\District.cs">
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Image.cs">
-      <DependentUpon>ModelSunshine.tt</DependentUpon>
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelSunshine.Context.cs">
+    <Compile Include="Models\ModelVietnamSunshine.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSunshine.Context.tt</DependentUpon>
+      <DependentUpon>ModelVietnamSunshine.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelSunshine.cs">
+    <Compile Include="Models\ModelVietnamSunshine.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSunshine.tt</DependentUpon>
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelSunshine.Designer.cs">
+    <Compile Include="Models\ModelVietnamSunshine.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSunshine.edmx</DependentUpon>
+      <DependentUpon>ModelVietnamSunshine.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Plan.cs">
-      <DependentUpon>ModelSunshine.tt</DependentUpon>
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Post.cs">
-      <DependentUpon>ModelSunshine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RoleAddress.cs">
-      <DependentUpon>ModelSunshine.tt</DependentUpon>
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RoleUser.cs">
-      <DependentUpon>ModelSunshine.tt</DependentUpon>
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sponsor.cs">
-      <DependentUpon>ModelSunshine.tt</DependentUpon>
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>ModelSunshine.tt</DependentUpon>
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ward.cs">
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -213,15 +217,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\ModelSunshine.Context.tt">
+    <Content Include="Models\ModelVietnamSunshine.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelSunshine.Context.cs</LastGenOutput>
-      <DependentUpon>ModelSunshine.edmx</DependentUpon>
+      <DependentUpon>ModelVietnamSunshine.edmx</DependentUpon>
+      <LastGenOutput>ModelVietnamSunshine.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModelSunshine.tt">
+    <Content Include="Models\ModelVietnamSunshine.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelSunshine.edmx</DependentUpon>
-      <LastGenOutput>ModelSunshine.cs</LastGenOutput>
+      <DependentUpon>ModelVietnamSunshine.edmx</DependentUpon>
+      <LastGenOutput>ModelVietnamSunshine.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -244,12 +248,15 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\ModelSunshine.edmx">
+    <EntityDeploy Include="Models\ModelVietnamSunshine.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelSunshine.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelVietnamSunshine.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ModelSunshine.edmx.diagram">
-      <DependentUpon>ModelSunshine.edmx</DependentUpon>
+    <Content Include="Models\ModelVietnamSunshine.edmx.diagram">
+      <DependentUpon>ModelVietnamSunshine.edmx</DependentUpon>
+    </Content>
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -270,7 +277,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

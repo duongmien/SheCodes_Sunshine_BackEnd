@@ -12,29 +12,24 @@ namespace Sunshine.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Post
+    public partial class District
     {
-        public Post()
+        public District()
         {
-            this.Images = new HashSet<Image>();
             this.Plans = new HashSet<Plan>();
+            this.Posts = new HashSet<Post>();
+            this.Users = new HashSet<User>();
+            this.Wards = new HashSet<Ward>();
         }
     
         public int Id { get; set; }
-        public System.DateTime TimePost { get; set; }
-        public int IdUser { get; set; }
-        public string Content { get; set; }
-        public string Street { get; set; }
-        public int IdWard { get; set; }
-        public int IdDistrict { get; set; }
         public int IdCity { get; set; }
-        public string StatePost { get; set; }
+        public string NameDistrict { get; set; }
     
         public virtual City City { get; set; }
-        public virtual District District { get; set; }
-        public virtual ICollection<Image> Images { get; set; }
         public virtual ICollection<Plan> Plans { get; set; }
-        public virtual User User { get; set; }
-        public virtual Ward Ward { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Ward> Wards { get; set; }
     }
 }

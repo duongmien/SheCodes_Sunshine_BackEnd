@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="682808ab8c7644d1910a90d1aa71e7e5" Name="Diagram1" ZoomLevel="106">
+        <EntityTypeShape EntityType="VietnamSunshineModel.City" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VietnamSunshineModel.District" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VietnamSunshineModel.Image" Width="1.5" PointX="12.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VietnamSunshineModel.Plan" Width="1.5" PointX="7.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VietnamSunshineModel.Post" Width="1.5" PointX="10.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VietnamSunshineModel.RoleUser" Width="1.5" PointX="8.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VietnamSunshineModel.Sponsor" Width="1.5" PointX="12.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VietnamSunshineModel.User" Width="1.5" PointX="10.5" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VietnamSunshineModel.Ward" Width="1.5" PointX="5.25" PointY="22" IsExpanded="true" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__District__IdCity__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Plans__IdCity__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Posts__IdCity__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Users__IdCity__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Plans__IdDistric__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Posts__IdDistric__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Users__IdDistric__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Ward__IdDistrict__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Images__IdPost__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Plans__IdPost__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Plans__IdWard__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Posts__IdUser__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Posts__IdWard__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Users__IdRole__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Sponsor__IdUser__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="VietnamSunshineModel.FK__Users__IdWard__412EB0B6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

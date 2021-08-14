@@ -13,10 +13,10 @@ namespace Sunshine.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SunshineEntities : DbContext
+    public partial class VietnamSunshineEntities : DbContext
     {
-        public SunshineEntities()
-            : base("name=SunshineEntities")
+        public VietnamSunshineEntities()
+            : base("name=VietnamSunshineEntities")
         {
         }
     
@@ -25,13 +25,14 @@ namespace Sunshine.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Address> Addresses { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<District> Districts { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<RoleAddress> RoleAddresses { get; set; }
         public DbSet<RoleUser> RoleUsers { get; set; }
         public DbSet<Sponsor> Sponsors { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Ward> Wards { get; set; }
     }
 }

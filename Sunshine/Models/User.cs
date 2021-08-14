@@ -25,17 +25,16 @@ namespace Sunshine.Models
         public string NameUser { get; set; }
         public string Phone { get; set; }
         public bool Gender { get; set; }
-        public int IdStreet { get; set; }
+        public string Street { get; set; }
         public int IdWard { get; set; }
         public int IdDistrict { get; set; }
         public int IdCity { get; set; }
     
-        public virtual Address Address { get; set; }
-        public virtual Address Address1 { get; set; }
-        public virtual Address Address2 { get; set; }
-        public virtual Address Address3 { get; set; }
+        public virtual City City { get; set; }
+        public virtual District District { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
         public virtual RoleUser RoleUser { get; set; }
         public virtual ICollection<Sponsor> Sponsors { get; set; }
+        public virtual Ward Ward { get; set; }
     }
 }
