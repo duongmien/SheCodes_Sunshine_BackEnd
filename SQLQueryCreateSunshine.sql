@@ -1,19 +1,23 @@
-CREATE DATABASE Sunshine
+CREATE DATABASE SunshineVietnam
 GO
 
 CREATE TABLE RoleUser(
 	Id int IDENTITY(1,1) PRIMARY KEY,
 	NameRole varchar(5) NOT NULL
 );
-CREATE TABLE RoleAddress(
+CREATE TABLE City(
 	Id int IDENTITY(1,1) PRIMARY KEY,
-	NameRole varchar(10) NOT NULL
+	NameCity varchar(max) NOT NULL
 );
-GO
-CREATE TABLE Addresses(
+CREATE TABLE District(
 	Id int IDENTITY(1,1) PRIMARY KEY,
-	IdRole int FOREIGN KEY REFERENCES RoleAddress(Id) NOT NULL,
-	NameAddress varchar(50) NOT NULL
+	IdCity int FOREIGN KEY REFERENCES City(Id) NOT NULL,
+	NameDistrict varchar(max) NOT NULL
+);
+CREATE TABLE Ward(
+	Id int IDENTITY(1,1) PRIMARY KEY,
+	IdDistrict int FOREIGN KEY REFERENCES District(Id) NOT NULL,
+	NameWard varchar(max) NOT NULL
 );
 
 CREATE TABLE Users(
@@ -63,27 +67,4 @@ CREATE TABLE Sponsor(
 	IdUser int FOREIGN KEY REFERENCES Users(Id) NOT NULL,
 	Budget decimal NOT NULL,
 	TimeSponsor datetime NOT NULL
-);
-
-DROP TABLE RoleAddress;
-DROP TABLE Addresses;
-DROP TABLE Users;
-DROP TABLE Posts;
-DROP TABLE Images;
-DROP TABLE Plans;
-DROP TABLE Sponsor;
-
-CREATE TABLE City(
-	Id int IDENTITY(1,1) PRIMARY KEY,
-	NameCity varchar(max) NOT NULL
-);
-CREATE TABLE District(
-	Id int IDENTITY(1,1) PRIMARY KEY,
-	IdCity int FOREIGN KEY REFERENCES City(Id) NOT NULL,
-	NameDistrict varchar(max) NOT NULL
-);
-CREATE TABLE Ward(
-	Id int IDENTITY(1,1) PRIMARY KEY,
-	IdDistrict int FOREIGN KEY REFERENCES District(Id) NOT NULL,
-	NameWard varchar(max) NOT NULL
 );
