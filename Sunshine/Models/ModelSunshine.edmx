@@ -1,0 +1,925 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SunshineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="NameAddress" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPost" Type="int" Nullable="false" />
+          <Property Name="PathImage" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plans">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPost" Type="int" Nullable="false" />
+          <Property Name="TimePlan" Type="datetime" Nullable="false" />
+          <Property Name="Purpose" Type="varchar(max)" Nullable="false" />
+          <Property Name="Budget" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IdStreet" Type="int" Nullable="false" />
+          <Property Name="IdWard" Type="int" Nullable="false" />
+          <Property Name="IdDistrict" Type="int" Nullable="false" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimePost" Type="datetime" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="Content" Type="varchar(max)" Nullable="false" />
+          <Property Name="IdStreet" Type="int" Nullable="false" />
+          <Property Name="IdWard" Type="int" Nullable="false" />
+          <Property Name="IdDistrict" Type="int" Nullable="false" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="StatePost" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="RoleAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="Budget" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TimeSponsor" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="NameUser" Type="varchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="IdStreet" Type="int" Nullable="false" />
+          <Property Name="IdWard" Type="int" Nullable="false" />
+          <Property Name="IdDistrict" Type="int" Nullable="false" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Addresses__IdRol__3A81B327">
+          <End Role="RoleAddress" Type="Self.RoleAddress" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Images__IdPost__4BAC3F29">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="IdPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plans__IdCity__52593CB8">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Plans" Type="Self.Plans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plans">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plans__IdDistric__5165187F">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Plans" Type="Self.Plans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plans">
+              <PropertyRef Name="IdDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plans__IdPost__4E88ABD4">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="Plans" Type="Self.Plans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plans">
+              <PropertyRef Name="IdPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plans__IdStreet__4F7CD00D">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Plans" Type="Self.Plans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plans">
+              <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plans__IdWard__5070F446">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Plans" Type="Self.Plans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plans">
+              <PropertyRef Name="IdWard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posts__IdCity__47DBAE45">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posts__IdDistric__46E78A0C">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="IdDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posts__IdStreet__44FF419A">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posts__IdUser__440B1D61">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posts__IdWard__45F365D3">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="IdWard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sponsor__IdUser__5535A963">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sponsor">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IdCity__412EB0B6">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IdDistric__403A8C7D">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IdRole__3D5E1FD2">
+          <End Role="RoleUser" Type="Self.RoleUser" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IdStreet__3E52440B">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IdWard__3F466844">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdWard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SunshineModelStoreContainer">
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plans" EntityType="Self.Plans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleAddress" EntityType="Self.RoleAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleUser" EntityType="Self.RoleUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Addresses__IdRol__3A81B327" Association="Self.FK__Addresses__IdRol__3A81B327">
+            <End Role="RoleAddress" EntitySet="RoleAddress" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Images__IdPost__4BAC3F29" Association="Self.FK__Images__IdPost__4BAC3F29">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plans__IdCity__52593CB8" Association="Self.FK__Plans__IdCity__52593CB8">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Plans" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plans__IdDistric__5165187F" Association="Self.FK__Plans__IdDistric__5165187F">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Plans" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plans__IdPost__4E88ABD4" Association="Self.FK__Plans__IdPost__4E88ABD4">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Plans" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plans__IdStreet__4F7CD00D" Association="Self.FK__Plans__IdStreet__4F7CD00D">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Plans" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plans__IdWard__5070F446" Association="Self.FK__Plans__IdWard__5070F446">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Plans" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posts__IdCity__47DBAE45" Association="Self.FK__Posts__IdCity__47DBAE45">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posts__IdDistric__46E78A0C" Association="Self.FK__Posts__IdDistric__46E78A0C">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posts__IdStreet__44FF419A" Association="Self.FK__Posts__IdStreet__44FF419A">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posts__IdUser__440B1D61" Association="Self.FK__Posts__IdUser__440B1D61">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posts__IdWard__45F365D3" Association="Self.FK__Posts__IdWard__45F365D3">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sponsor__IdUser__5535A963" Association="Self.FK__Sponsor__IdUser__5535A963">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sponsor" EntitySet="Sponsor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IdCity__412EB0B6" Association="Self.FK__Users__IdCity__412EB0B6">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IdDistric__403A8C7D" Association="Self.FK__Users__IdDistric__403A8C7D">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IdRole__3D5E1FD2" Association="Self.FK__Users__IdRole__3D5E1FD2">
+            <End Role="RoleUser" EntitySet="RoleUser" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IdStreet__3E52440B" Association="Self.FK__Users__IdStreet__3E52440B">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IdWard__3F466844" Association="Self.FK__Users__IdWard__3F466844">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SunshineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="NameAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RoleAddress" Relationship="Self.FK__Addresses__IdRol__3A81B327" FromRole="Addresses" ToRole="RoleAddress" />
+          <NavigationProperty Name="Plans" Relationship="Self.FK__Plans__IdCity__52593CB8" FromRole="Addresses" ToRole="Plans" />
+          <NavigationProperty Name="Plans1" Relationship="Self.FK__Plans__IdDistric__5165187F" FromRole="Addresses" ToRole="Plans" />
+          <NavigationProperty Name="Plans2" Relationship="Self.FK__Plans__IdStreet__4F7CD00D" FromRole="Addresses" ToRole="Plans" />
+          <NavigationProperty Name="Plans3" Relationship="Self.FK__Plans__IdWard__5070F446" FromRole="Addresses" ToRole="Plans" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK__Posts__IdCity__47DBAE45" FromRole="Addresses" ToRole="Posts" />
+          <NavigationProperty Name="Posts1" Relationship="Self.FK__Posts__IdDistric__46E78A0C" FromRole="Addresses" ToRole="Posts" />
+          <NavigationProperty Name="Posts2" Relationship="Self.FK__Posts__IdStreet__44FF419A" FromRole="Addresses" ToRole="Posts" />
+          <NavigationProperty Name="Posts3" Relationship="Self.FK__Posts__IdWard__45F365D3" FromRole="Addresses" ToRole="Posts" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__IdCity__412EB0B6" FromRole="Addresses" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK__Users__IdDistric__403A8C7D" FromRole="Addresses" ToRole="Users" />
+          <NavigationProperty Name="Users2" Relationship="Self.FK__Users__IdStreet__3E52440B" FromRole="Addresses" ToRole="Users" />
+          <NavigationProperty Name="Users3" Relationship="Self.FK__Users__IdWard__3F466844" FromRole="Addresses" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPost" Type="Int32" Nullable="false" />
+          <Property Name="PathImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Post" Relationship="Self.FK__Images__IdPost__4BAC3F29" FromRole="Images" ToRole="Posts" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPost" Type="Int32" Nullable="false" />
+          <Property Name="TimePlan" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Purpose" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Budget" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IdStreet" Type="Int32" Nullable="false" />
+          <Property Name="IdWard" Type="Int32" Nullable="false" />
+          <Property Name="IdDistrict" Type="Int32" Nullable="false" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Plans__IdCity__52593CB8" FromRole="Plans" ToRole="Addresses" />
+          <NavigationProperty Name="Address1" Relationship="Self.FK__Plans__IdDistric__5165187F" FromRole="Plans" ToRole="Addresses" />
+          <NavigationProperty Name="Address2" Relationship="Self.FK__Plans__IdStreet__4F7CD00D" FromRole="Plans" ToRole="Addresses" />
+          <NavigationProperty Name="Address3" Relationship="Self.FK__Plans__IdWard__5070F446" FromRole="Plans" ToRole="Addresses" />
+          <NavigationProperty Name="Post" Relationship="Self.FK__Plans__IdPost__4E88ABD4" FromRole="Plans" ToRole="Posts" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimePost" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdStreet" Type="Int32" Nullable="false" />
+          <Property Name="IdWard" Type="Int32" Nullable="false" />
+          <Property Name="IdDistrict" Type="Int32" Nullable="false" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <Property Name="StatePost" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Posts__IdCity__47DBAE45" FromRole="Posts" ToRole="Addresses" />
+          <NavigationProperty Name="Address1" Relationship="Self.FK__Posts__IdDistric__46E78A0C" FromRole="Posts" ToRole="Addresses" />
+          <NavigationProperty Name="Address2" Relationship="Self.FK__Posts__IdStreet__44FF419A" FromRole="Posts" ToRole="Addresses" />
+          <NavigationProperty Name="Address3" Relationship="Self.FK__Posts__IdWard__45F365D3" FromRole="Posts" ToRole="Addresses" />
+          <NavigationProperty Name="Images" Relationship="Self.FK__Images__IdPost__4BAC3F29" FromRole="Posts" ToRole="Images" />
+          <NavigationProperty Name="Plans" Relationship="Self.FK__Plans__IdPost__4E88ABD4" FromRole="Posts" ToRole="Plans" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Posts__IdUser__440B1D61" FromRole="Posts" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="RoleAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK__Addresses__IdRol__3A81B327" FromRole="RoleAddress" ToRole="Addresses" />
+        </EntityType>
+        <EntityType Name="RoleUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__IdRole__3D5E1FD2" FromRole="RoleUser" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Budget" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TimeSponsor" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Sponsor__IdUser__5535A963" FromRole="Sponsor" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="NameUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="IdStreet" Type="Int32" Nullable="false" />
+          <Property Name="IdWard" Type="Int32" Nullable="false" />
+          <Property Name="IdDistrict" Type="Int32" Nullable="false" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Users__IdCity__412EB0B6" FromRole="Users" ToRole="Addresses" />
+          <NavigationProperty Name="Address1" Relationship="Self.FK__Users__IdDistric__403A8C7D" FromRole="Users" ToRole="Addresses" />
+          <NavigationProperty Name="Address2" Relationship="Self.FK__Users__IdStreet__3E52440B" FromRole="Users" ToRole="Addresses" />
+          <NavigationProperty Name="Address3" Relationship="Self.FK__Users__IdWard__3F466844" FromRole="Users" ToRole="Addresses" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK__Posts__IdUser__440B1D61" FromRole="Users" ToRole="Posts" />
+          <NavigationProperty Name="RoleUser" Relationship="Self.FK__Users__IdRole__3D5E1FD2" FromRole="Users" ToRole="RoleUser" />
+          <NavigationProperty Name="Sponsors" Relationship="Self.FK__Sponsor__IdUser__5535A963" FromRole="Users" ToRole="Sponsor" />
+        </EntityType>
+        <Association Name="FK__Addresses__IdRol__3A81B327">
+          <End Role="RoleAddress" Type="Self.RoleAddress" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plans__IdCity__52593CB8">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Plans" Type="Self.Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plans">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plans__IdDistric__5165187F">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Plans" Type="Self.Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plans">
+              <PropertyRef Name="IdDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plans__IdStreet__4F7CD00D">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Plans" Type="Self.Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plans">
+              <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plans__IdWard__5070F446">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Plans" Type="Self.Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plans">
+              <PropertyRef Name="IdWard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posts__IdCity__47DBAE45">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posts__IdDistric__46E78A0C">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="IdDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posts__IdStreet__44FF419A">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posts__IdWard__45F365D3">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="IdWard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IdCity__412EB0B6">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IdDistric__403A8C7D">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IdStreet__3E52440B">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IdWard__3F466844">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdWard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Images__IdPost__4BAC3F29">
+          <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+          <End Role="Images" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="IdPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plans__IdPost__4E88ABD4">
+          <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+          <End Role="Plans" Type="Self.Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plans">
+              <PropertyRef Name="IdPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Posts__IdUser__440B1D61">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IdRole__3D5E1FD2">
+          <End Role="RoleUser" Type="Self.RoleUser" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sponsor__IdUser__5535A963">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sponsor">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SunshineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="Plans" EntityType="Self.Plan" />
+          <EntitySet Name="Posts" EntityType="Self.Post" />
+          <EntitySet Name="RoleAddresses" EntityType="Self.RoleAddress" />
+          <EntitySet Name="RoleUsers" EntityType="Self.RoleUser" />
+          <EntitySet Name="Sponsors" EntityType="Self.Sponsor" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Addresses__IdRol__3A81B327" Association="Self.FK__Addresses__IdRol__3A81B327">
+            <End Role="RoleAddress" EntitySet="RoleAddresses" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plans__IdCity__52593CB8" Association="Self.FK__Plans__IdCity__52593CB8">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Plans" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plans__IdDistric__5165187F" Association="Self.FK__Plans__IdDistric__5165187F">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Plans" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plans__IdStreet__4F7CD00D" Association="Self.FK__Plans__IdStreet__4F7CD00D">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Plans" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plans__IdWard__5070F446" Association="Self.FK__Plans__IdWard__5070F446">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Plans" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posts__IdCity__47DBAE45" Association="Self.FK__Posts__IdCity__47DBAE45">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posts__IdDistric__46E78A0C" Association="Self.FK__Posts__IdDistric__46E78A0C">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posts__IdStreet__44FF419A" Association="Self.FK__Posts__IdStreet__44FF419A">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posts__IdWard__45F365D3" Association="Self.FK__Posts__IdWard__45F365D3">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IdCity__412EB0B6" Association="Self.FK__Users__IdCity__412EB0B6">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IdDistric__403A8C7D" Association="Self.FK__Users__IdDistric__403A8C7D">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IdStreet__3E52440B" Association="Self.FK__Users__IdStreet__3E52440B">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IdWard__3F466844" Association="Self.FK__Users__IdWard__3F466844">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Images__IdPost__4BAC3F29" Association="Self.FK__Images__IdPost__4BAC3F29">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plans__IdPost__4E88ABD4" Association="Self.FK__Plans__IdPost__4E88ABD4">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Plans" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posts__IdUser__440B1D61" Association="Self.FK__Posts__IdUser__440B1D61">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IdRole__3D5E1FD2" Association="Self.FK__Users__IdRole__3D5E1FD2">
+            <End Role="RoleUser" EntitySet="RoleUsers" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sponsor__IdUser__5535A963" Association="Self.FK__Sponsor__IdUser__5535A963">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sponsor" EntitySet="Sponsors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SunshineModelStoreContainer" CdmEntityContainer="SunshineEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="SunshineModel.Address">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="NameAddress" ColumnName="NameAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="SunshineModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="PathImage" ColumnName="PathImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plans">
+            <EntityTypeMapping TypeName="SunshineModel.Plan">
+              <MappingFragment StoreEntitySet="Plans">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="TimePlan" ColumnName="TimePlan" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
+                <ScalarProperty Name="IdWard" ColumnName="IdWard" />
+                <ScalarProperty Name="IdDistrict" ColumnName="IdDistrict" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="SunshineModel.Post">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TimePost" ColumnName="TimePost" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
+                <ScalarProperty Name="IdWard" ColumnName="IdWard" />
+                <ScalarProperty Name="IdDistrict" ColumnName="IdDistrict" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="StatePost" ColumnName="StatePost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleAddresses">
+            <EntityTypeMapping TypeName="SunshineModel.RoleAddress">
+              <MappingFragment StoreEntitySet="RoleAddress">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleUsers">
+            <EntityTypeMapping TypeName="SunshineModel.RoleUser">
+              <MappingFragment StoreEntitySet="RoleUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sponsors">
+            <EntityTypeMapping TypeName="SunshineModel.Sponsor">
+              <MappingFragment StoreEntitySet="Sponsor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="TimeSponsor" ColumnName="TimeSponsor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SunshineModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
+                <ScalarProperty Name="IdWard" ColumnName="IdWard" />
+                <ScalarProperty Name="IdDistrict" ColumnName="IdDistrict" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

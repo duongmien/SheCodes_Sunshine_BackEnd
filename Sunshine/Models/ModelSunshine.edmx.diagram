@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b2bbfebce29f4dc7bf4bff848d275878" Name="Diagram1">
+        <EntityTypeShape EntityType="SunshineModel.Address" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SunshineModel.Image" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SunshineModel.Plan" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SunshineModel.Post" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SunshineModel.RoleAddress" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SunshineModel.RoleUser" Width="1.5" PointX="2.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SunshineModel.Sponsor" Width="1.5" PointX="7.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SunshineModel.User" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="SunshineModel.FK__Addresses__IdRol__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Plans__IdCity__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Plans__IdDistric__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Plans__IdStreet__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Plans__IdWard__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Posts__IdCity__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Posts__IdDistric__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Posts__IdStreet__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Posts__IdWard__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Users__IdCity__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Users__IdDistric__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Users__IdStreet__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Users__IdWard__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Images__IdPost__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Plans__IdPost__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Posts__IdUser__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Users__IdRole__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="SunshineModel.FK__Sponsor__IdUser__5535A963" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
