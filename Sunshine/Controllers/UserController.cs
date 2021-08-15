@@ -69,5 +69,23 @@ namespace Sunshine.Controllers
                 return Ok(HttpStatusCode.BadRequest);
             }
         }
+        [HttpPost]
+        [ResponseType(typeof(User))]
+        [Route("signup")]
+        public IHttpActionResult signup(User user)
+        {
+            try
+            {
+                var result = new HttpResponseMessage(HttpStatusCode.OK);
+                sunshineEntities.Users.Add(user);
+                sunshineEntities.SaveChanges();
+                return Ok(user);
+
+            }
+            catch
+            {
+                return Ok(HttpStatusCode.BadRequest);
+            }
+        }
     }
 }

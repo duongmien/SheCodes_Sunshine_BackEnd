@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="682808ab8c7644d1910a90d1aa71e7e5" Name="Diagram1" ZoomLevel="106">
+      <Diagram DiagramId="682808ab8c7644d1910a90d1aa71e7e5" Name="Diagram1" ZoomLevel="49">
         <EntityTypeShape EntityType="VietnamSunshineModel.City" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VietnamSunshineModel.District" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="VietnamSunshineModel.Image" Width="1.5" PointX="12.75" PointY="14.5" IsExpanded="true" />
@@ -30,6 +30,7 @@
         <AssociationConnector Association="VietnamSunshineModel.FK__Users__IdRole__403A8C7D" ManuallyRouted="false" />
         <AssociationConnector Association="VietnamSunshineModel.FK__Sponsor__IdUser__5535A963" ManuallyRouted="false" />
         <AssociationConnector Association="VietnamSunshineModel.FK__Users__IdWard__412EB0B6" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VietnamSunshineModel.sysdiagram" Width="1.5" PointX="7.875" PointY="4.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

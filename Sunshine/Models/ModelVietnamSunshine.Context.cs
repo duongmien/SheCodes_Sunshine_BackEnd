@@ -34,5 +34,6 @@ namespace Sunshine.Models
         public DbSet<Sponsor> Sponsors { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Ward> Wards { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

@@ -200,6 +200,9 @@
     <Compile Include="Models\Sponsor.cs">
       <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>ModelVietnamSunshine.tt</DependentUpon>
     </Compile>

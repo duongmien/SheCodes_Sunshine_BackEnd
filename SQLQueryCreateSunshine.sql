@@ -68,3 +68,5 @@ CREATE TABLE Sponsor(
 	Budget decimal NOT NULL,
 	TimeSponsor datetime NOT NULL
 );
+ALTER TABLE Users
+ADD PasswordUser varchar(max) NOT NULL;

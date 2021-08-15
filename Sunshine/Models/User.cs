@@ -29,6 +29,7 @@ namespace Sunshine.Models
         public int IdWard { get; set; }
         public int IdDistrict { get; set; }
         public int IdCity { get; set; }
+        public string PasswordUser { get; set; }
     
         public virtual City City { get; set; }
         public virtual District District { get; set; }

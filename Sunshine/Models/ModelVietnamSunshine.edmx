@@ -72,6 +72,16 @@
           <Property Name="Budget" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="TimeSponsor" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
@@ -85,6 +95,7 @@
           <Property Name="IdWard" Type="int" Nullable="false" />
           <Property Name="IdDistrict" Type="int" Nullable="false" />
           <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="PasswordUser" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Ward">
           <Key>
@@ -294,6 +305,7 @@
           <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleUser" EntityType="Self.RoleUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ward" EntityType="Self.Ward" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__District__IdCity__3A81B327" Association="Self.FK__District__IdCity__3A81B327">
@@ -473,6 +485,7 @@
           <NavigationProperty Name="RoleUser" Relationship="Self.FK__Users__IdRole__403A8C7D" FromRole="Users" ToRole="RoleUser" />
           <NavigationProperty Name="Sponsors" Relationship="Self.FK__Sponsor__IdUser__5535A963" FromRole="Users" ToRole="Sponsor" />
           <NavigationProperty Name="Ward" Relationship="Self.FK__Users__IdWard__412EB0B6" FromRole="Users" ToRole="Ward" />
+          <Property Name="PasswordUser" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Ward">
           <Key>
@@ -752,7 +765,18 @@
             <End Role="Ward" EntitySet="Wards" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="VietnamSunshineModel.sysdiagram" />
         </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -836,6 +860,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="VietnamSunshineModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdRole" ColumnName="IdRole" />
                 <ScalarProperty Name="NameUser" ColumnName="NameUser" />
@@ -854,6 +879,17 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdDistrict" ColumnName="IdDistrict" />
                 <ScalarProperty Name="NameWard" ColumnName="NameWard" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="VietnamSunshineModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
